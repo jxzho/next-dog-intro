@@ -1,0 +1,8 @@
+.layout {
+  background: linear-gradient(90deg, #ececec 28%, #eee 0);
+  background-size: 15px;
+}
+
+.author {
+  @apply fixed left-1/2 -translate-x-1/2 bottom-0 text-xs text-gray-500 p-6;
+}
