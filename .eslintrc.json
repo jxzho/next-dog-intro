@@ -1,9 +1,10 @@
 {
   "extends": "next/core-web-vitals",
   "rules": {
-    "quotes": ["error", "single"],
     "semi": [
-      "error", {
+      "error",
+      "never",
+      {
         "beforeStatementContinuationChars": "always"
       }
     ]
