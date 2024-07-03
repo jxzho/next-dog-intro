@@ -23,6 +23,7 @@ export async function fetchNotionResume (block_id = PAGE_ID_RESUME): Promise<Lis
 }
 
 export function parseDataBlockResumeToJSX (data: Awaited<ReturnType<typeof fetchNotionResume>>) {
+  // @ts-expect-error
   return data.results.map<string | JSX.Element>((item: BlockObjectResponse, index: number) => {
     if (item.type === 'paragraph') {
       const hasValues = item.paragraph.rich_text?.length
