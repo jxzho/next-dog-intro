@@ -6,8 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "deployx": "next build && next start"
+    "lint": "next lint"
   },
   "dependencies": {
     "@geist-ui/core": "^2.3.8",
