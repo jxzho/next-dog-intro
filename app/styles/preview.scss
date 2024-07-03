@@ -1,0 +1,5 @@
+@import './_common.scss';
+
+.resume-preview-wrapper {
+  @include common-preview-resume;
+}

@@ -1,0 +1,12 @@
+.dot-list {
+  @apply inline-block px-1.5 select-none text-black;
+
+  &::before {
+    content: var(--list-num, '•');
+    display: inline-block;
+    font-size: inherit;
+    // font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 50%;
+  }
+}

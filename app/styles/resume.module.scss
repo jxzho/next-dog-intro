@@ -1,0 +1,6 @@
+@import './_common';
+
+.wrapper {
+  @apply mx-auto my-8 px-5 sm:px-0;
+  @include common-preview-resume;
+}

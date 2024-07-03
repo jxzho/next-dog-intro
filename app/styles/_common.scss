@@ -1,0 +1,26 @@
+@mixin common-preview-resume {
+  @apply max-w-screen-sm;
+
+  > div, p, ul, li, ol {
+    @apply my-1.5;
+  }
+
+  h1, h2 {
+    @apply text-xl mt-2.5;
+  }
+
+  h3, h4, h5, h6 {
+    @apply text-lg mt-2.5;
+  }
+
+  >.my-name {
+    @apply text-3xl;
+  }
+
+  a {
+    @apply text-gray-500 underline-offset-1 underline;
+    &:hover {
+      @apply text-black;
+    }
+  }
+}

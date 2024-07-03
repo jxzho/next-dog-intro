@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --footer-author-h: 65px;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,6 +17,11 @@
   }
 }
 
+html {
+  background: linear-gradient(90deg, #ececec 28%, #eee 0);
+  background-size: 15px;
+}
+
 body {
   @apply text-sm;
   color: rgb(var(--foreground-rgb));
@@ -24,8 +30,22 @@ body {
   font-weight: normal;
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+#geist-ui-toast {
+  .toast {
+    @apply text-sm text-[#666] shadow-none border border-solid border-gray-300 flex justify-between px-10;
+
+    >.message, .action {
+      @apply p-0;
+    }
   }
 }

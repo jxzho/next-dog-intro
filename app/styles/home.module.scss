@@ -1,3 +1,7 @@
+.home {
+  min-height: calc(100vh - var(--footer-author-h));
+}
+
 .nav-links {
   @apply flex gap-x-2 my-3.5;
 
@@ -26,4 +30,7 @@
   }
 }
 
-
+.author {
+  @apply text-xs text-gray-500 p-6 text-center select-none;
+  height: var(--footer-author-h);
+}

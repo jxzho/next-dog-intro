@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
-import './globals.css'
-import styles from './styles/layout.module.scss'
+import GeistProvider from './geist-provider'
+import './styles/globals.scss'
 
 export const metadata: Metadata = {
   title: 'Junxio is here',
@@ -18,9 +18,8 @@ export default function RootLayout({
         <link href="https://cdn.junxio.cc/static/font/ST_Black/Medium/index.css" rel="stylesheet" />
         <link href="https://cdn.junxio.cc/static/font/ST_Black/Bold/index.css" rel="stylesheet" />
       </head>
-      <body className={styles.layout}>
-        {children}
-        <span className={styles.author}>© 2024 Junxio.</span>
+      <body>
+        <GeistProvider>{children}</GeistProvider>
       </body>
     </html>
   )
