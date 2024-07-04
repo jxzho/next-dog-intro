@@ -3,12 +3,22 @@
 import { Button } from '@geist-ui/core'
 import { useToast } from '@/app/hooks'
 import { useRouter } from 'next/navigation'
+import { useTransition } from 'react'
+import { Loading } from '@/app/ui'
 
-export default function ButtonSync ({ updateToServer }: {
+export default function ButtonSync ({ updateToServer, children }: {
   updateToServer: (html: string) => Promise<void>
+  children: React.ReactNode
 }) {
   const router = useRouter()
   const toast = useToast()
+  const [isPending, startTransition] = useTransition()
+
+  const handleRefresh = () => {
+    startTransition(() => {
+      router.refresh()
+    })
+  }
 
   const handleUpdateToServer = async () => {
     const html = document.querySelector('.resume-preview-wrapper')?.innerHTML
@@ -21,17 +31,22 @@ export default function ButtonSync ({ updateToServer }: {
   }
 
   return (
-    <div className='flex gap-x-2'>
-      <Button scale={0.7} onClick={() => router.refresh()}>
-        <svg className='mr-1' stroke-linejoin="round" viewBox="0 0 16 16" width="10" height="10"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.00002 1.25C5.33749 1.25 3.02334 2.73677 1.84047 4.92183L1.48342 5.58138L2.80253 6.29548L3.15958 5.63592C4.09084 3.91566 5.90986 2.75 8.00002 2.75C10.4897 2.75 12.5941 4.40488 13.2713 6.67462H11.8243H11.0743V8.17462H11.8243H15.2489C15.6631 8.17462 15.9989 7.83883 15.9989 7.42462V4V3.25H14.4989V4V5.64468C13.4653 3.06882 10.9456 1.25 8.00002 1.25ZM1.50122 10.8555V12.5V13.25H0.0012207V12.5V9.07538C0.0012207 8.66117 0.337007 8.32538 0.751221 8.32538H4.17584H4.92584V9.82538H4.17584H2.72876C3.40596 12.0951 5.51032 13.75 8.00002 13.75C10.0799 13.75 11.8912 12.5958 12.8266 10.8895L13.1871 10.2318L14.5025 10.9529L14.142 11.6105C12.9539 13.7779 10.6494 15.25 8.00002 15.25C5.05453 15.25 2.53485 13.4313 1.50122 10.8555Z" fill="currentColor"></path></svg>
-        刷新
-      </Button>
-      <Button scale={0.7} onClick={handleUpdateToServer}>
-        更新至服务端
-      </Button>
-      <Button scale={0.7} onClick={() => router.push('/resume')}>
-        查看简历
-      </Button>
-    </div>
+    <>
+      <div className='flex gap-x-2'>
+        <Button scale={0.7} onClick={handleRefresh} loading={isPending}>
+          <svg className='mr-1 inline-block' strokeLinejoin="round" viewBox="0 0 16 16" width="10" height="10" style={{ color: 'currentcolor' }}><path fillRule="evenodd" clipRule="evenodd" d="M2.5 8C2.5 4.96643 4.97431 2.5 8.03548 2.5C10.5716 2.5 12.7064 4.19393 13.3628 6.5H10.75H10V8H10.75H15.25C15.6642 8 16 7.66421 16 7.25V2.75V2H14.5V2.75V5.23347C13.4215 2.74164 10.9316 1 8.03548 1C4.1539 1 1 4.13001 1 8C1 11.87 4.1539 15 8.03548 15C10.3763 15 12.4513 13.8617 13.7295 12.1122L14.172 11.5066L12.9609 10.6217L12.5184 11.2273C11.5117 12.6051 9.87945 13.5 8.03548 13.5C4.97431 13.5 2.5 11.0336 2.5 8Z" fill="currentColor"></path></svg>
+          刷新
+        </Button>
+        <Button scale={0.7} onClick={handleUpdateToServer} loading={isPending}>
+          更新至服务端
+        </Button>
+        <Button scale={0.7} onClick={() => router.push('/resume')}>
+          查看简历
+        </Button>
+      </div>
+      {isPending
+        ? <Loading className='block max-w-10 !my-5' />
+        : children}
+    </>
   )
 }
