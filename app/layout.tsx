@@ -5,7 +5,6 @@ import './styles/globals.scss'
 export const metadata: Metadata = {
   title: 'Junxio is here',
   description: 'The site was built by Junxio(Russell Xio).',
-  themeColor: '#eeeeee'
 }
 
 export default function RootLayout({
@@ -19,6 +18,7 @@ export default function RootLayout({
         <link href="https://cdn.junxio.cc/static/font/ST_Black/Medium/index.css" rel="stylesheet" />
         <link href="https://cdn.junxio.cc/static/font/ST_Black/Bold/index.css" rel="stylesheet" />
 
+        <meta name="theme-color" content="#eee" />
         <meta property='og:title' content='Junxio is here' key='ogtitle' />
         <meta property='og:description' content="The site was built by Junxio(Russell Xio)." key='ogdescription' />
         <meta property='og:url' content='junxio.cc' key='ogurl' />
