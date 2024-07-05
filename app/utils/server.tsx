@@ -43,8 +43,8 @@ export function parseDataBlockResumeToJSX (data: Awaited<ReturnType<typeof fetch
 
     if (item.type === 'numbered_list_item') {
       return (
-        <div key={item.id} className='my-1.5'>
-          <DotList num={index + 1} />
+        <div key={item.id} className='my-1.5 block-list-item'>
+          <DotList num={index + 1} className='absolute left-0 top-0' />
           {item.numbered_list_item.rich_text?.map(({ plain_text, href, annotations }, index) => {
             return annotations.bold
               ? <span className='font-bold'>{ plain_text }</span>
@@ -62,8 +62,8 @@ export function parseDataBlockResumeToJSX (data: Awaited<ReturnType<typeof fetch
 
     if (item.type === 'bulleted_list_item') {
       return (
-        <div key={item.id} className='my-1.5'>
-          <DotList />
+        <div key={item.id} className='my-1.5 block-list-item'>
+          <DotList className='absolute left-0 top-0' />
           {item.bulleted_list_item.rich_text?.map(({ plain_text, href, annotations }, index) => {
             return annotations.bold
               ? <span key={item.id + index} className='font-bold'>{ plain_text }</span>

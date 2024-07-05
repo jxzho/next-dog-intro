@@ -23,4 +23,9 @@
       @apply text-black;
     }
   }
+
+  .block-list-item {
+    @apply relative;
+    padding-inline-start: 20px;
+  }
 }
