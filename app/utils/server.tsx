@@ -1,7 +1,7 @@
 import { Suspense } from 'react'
 import { Client } from '@notionhq/client'
 import { ListBlockChildrenResponse, BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
-import NotionBlock from './resume/notion-block'
+import NotionBlock from '@/app/resume/notion-block'
 import clsx from 'clsx'
 import { DotList } from '@/app/ui'
 import { unstable_noStore } from 'next/cache'

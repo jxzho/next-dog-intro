@@ -1,16 +1,20 @@
-import { fetchNotionResume, parseDataBlockResumeToJSX } from '../utils'
+import { fetchNotionResume, parseDataBlockResumeToJSX } from '@/app/utils/server'
 import styles from '../styles/resume.module.scss'
 import { getFromServer } from '@/app/resume/sync/server'
+import Dom from './dom'
 
 export default async function Resume () {
   const html = await getFromServer()
 
   if (html) {
     return (
-      <div
-        className={styles.wrapper}
-        dangerouslySetInnerHTML={{ __html: html }}
-      ></div>
+      <>
+        <div
+          className={styles.wrapper}
+          dangerouslySetInnerHTML={{ __html: html }}
+        ></div>
+        <Dom />
+      </>
     )
   }
 

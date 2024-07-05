@@ -1,5 +1,4 @@
-import { fetchNotionResume } from '@/app/utils'
-import { parseDataBlockResumeToJSX } from '../utils'
+import { fetchNotionResume, parseDataBlockResumeToJSX } from '@/app/utils/server'
 import '../styles/preview.scss'
 
 export default async function ResumePreview () {

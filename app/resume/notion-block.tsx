@@ -1,4 +1,4 @@
-import { fetchNotionResume, parseDataBlockResumeToJSX } from '../utils'
+import { fetchNotionResume, parseDataBlockResumeToJSX } from '@/app/utils/server'
 
 export default async function NotionBlock (props: {
   id: string
