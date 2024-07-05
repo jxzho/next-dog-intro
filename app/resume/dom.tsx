@@ -9,9 +9,10 @@ export default function Dom () {
   const [rect, setRect] = useState<null | DOMRect>(null)
   const refEleLocator = useRef<null | HTMLElement>(null)
   const [isCopied, setCopied] = useState(false)
+  const timerCopy = useRef<null | number>(null)
 
   const startCopy = async () => {
-    await copyToClipboard(text)
+    await copyToClipboard(text.trim())
     setCopied(true)
   }
 
@@ -45,7 +46,6 @@ export default function Dom () {
   
   useEffect(() => {
     refEleLocator.current = document.createElement('i')
-
     document.addEventListener('selectstart', onSelectStart)
     document.addEventListener('mouseup', onSelectEnd)
     
@@ -56,8 +56,20 @@ export default function Dom () {
   }, [])
 
   useEffect(() => {
+    if (visible) {
+      timerCopy.current && window.clearTimeout(timerCopy.current)
+    }
     setCopied(false)
   }, [visible])
+
+  useEffect(() => {
+    if (isCopied) {
+      timerCopy.current = window.setTimeout(() => {
+        setVisible(false)
+        timerCopy.current = null
+      }, 2000)
+    }
+  }, [isCopied])
 
   return visible ? (
     <div
