@@ -63,7 +63,7 @@ export default function Dom () {
     <div
       className='fixed left-0 top-0 bg-white px-2 py-1 border border-solid border-gray-300 transition-all rounded-md inline-flex items-center cursor-pointer select-none'
       style={{
-        transform: `translate3d(${Math.floor(rect.left + rect.width + 5)}px, ${Math.floor(rect.top - 5)}px, 0)`
+        transform: rect ? `translate3d(${Math.floor(rect.left + rect.width + 5)}px, ${Math.floor(rect.top - 5)}px, 0)` : ''
       }}
       onClick={() => startCopy()}
     >
