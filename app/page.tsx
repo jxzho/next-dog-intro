@@ -4,7 +4,7 @@ import Link from 'next/link'
 export default function Home () {
   return (
     <>
-      <main className={styles.home + " sm:px-28 sm:py-16 p-5 text-[#333]"}>
+      <main className={styles.home + " p-5 text-[#333]"}>
         <header className='text-5xl sm:text-6xl font-bold'>
           👋 Hi!&nbsp;&nbsp;I&rsquo;m Junxio
         </header>
