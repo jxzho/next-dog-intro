@@ -9,14 +9,14 @@ export default function Home () {
       <main className={styles.home + " p-5 text-[#333]"}>
         <header className='header-greeting'>
           <div className='font-bold text-3xl sm:text-4xl'>
-            👋 Hi,&nbsp;I&#39;&nbsp;m&nbsp;
+            <i className={styles['wave-hand']}></i> Hi,&nbsp;I&#39;&nbsp;m&nbsp;
           </div>
           <div className='whoiam font-bold text-5xl sm:text-6xl text-black min-h-[3.75rem] !leading-tight'>
             <span className='leading-none'></span>
             <div className={
               clsx([
                 styles['cursor-typewriter'],
-                'inline-block w-1 rounded-sm bg-[#027AFF] mt-[0.58rem] h-[3.5rem] align-top'
+                'inline-block w-1 rounded-sm bg-[#027AFF] mt-[0.125rem] sm:mt-[0.58rem] h-[3.5rem] align-top'
               ])
             }></div>
           </div>
