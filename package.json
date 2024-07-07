@@ -3,15 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3851",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
     "@geist-ui/core": "^2.3.8",
+    "@gsap/react": "^2.1.1",
     "@notionhq/client": "^2.2.15",
     "clsx": "^2.1.1",
+    "gsap": "^3.12.5",
     "next": "14.2.4",
     "react": "^18",
     "react-dom": "^18",

@@ -36,3 +36,16 @@
   @apply text-xs text-gray-500 p-6 text-center select-none;
   height: var(--footer-author-h);
 }
+
+.cursor-typewriter {
+  animation: cursor 1s ease-in-out infinite;
+}
+
+@keyframes cursor {
+  from {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0;
+  }
+}

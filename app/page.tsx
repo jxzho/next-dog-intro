@@ -1,12 +1,25 @@
 import styles from './styles/home.module.scss'
 import Link from 'next/link'
+import clsx from 'clsx'
+import TypeWriter from './typewriter'
 
 export default function Home () {
   return (
     <>
       <main className={styles.home + " p-5 text-[#333]"}>
-        <header className='text-5xl sm:text-6xl font-bold'>
-          👋 Hi!&nbsp;&nbsp;I&rsquo;m Junxio
+        <header className='header-greeting'>
+          <div className='font-bold text-3xl sm:text-4xl'>
+            👋 Hi,&nbsp;I&#39;&nbsp;m&nbsp;
+          </div>
+          <div className='whoiam font-bold text-5xl sm:text-6xl text-black min-h-[3.75rem] !leading-tight'>
+            <span className='leading-none'></span>
+            <div className={
+              clsx([
+                styles['cursor-typewriter'],
+                'inline-block w-1 rounded-sm bg-[#027AFF] mt-[0.58rem] h-[3.5rem] align-top'
+              ])
+            }></div>
+          </div>
         </header>
 
         <ul className="my-8 flex flex-col gap-y-2.5 text-sm text-gray-500">
@@ -70,6 +83,14 @@ export default function Home () {
         </nav>
       </main>
       <div className={styles.author}>© 2024 Junxio.</div>
+      <TypeWriter
+        selector='.header-greeting >.whoiam >span'
+        words={[
+          'Junxio(俊雄).',
+          'a FE developer.',
+          'a life explorer.'
+        ]}
+      />
     </>
   )
 }
