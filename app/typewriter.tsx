@@ -25,6 +25,6 @@ export default function TypeWriter ({ selector, words }: {
       })
       tlMaster.add(tl)
     })
-  }, [selector, words])
+  }, [words])
   return null
 }

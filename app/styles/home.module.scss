@@ -37,8 +37,15 @@
   height: var(--footer-author-h);
 }
 
-.cursor-typewriter {
-  animation: cursor 1s ease-in-out infinite;
+.whoiam {
+  @apply font-bold text-5xl sm:text-6xl text-black min-h-[3.75rem];
+  @apply leading-tight #{!important};
+
+  &::after {
+    content: '';
+    animation: cursor 1s ease-in-out infinite;
+    @apply inline-block w-1 rounded-sm bg-[#027AFF] mt-[0.125rem] sm:mt-[0.58rem] h-[3.5rem] align-top;
+  }
 }
 
 @keyframes cursor {
