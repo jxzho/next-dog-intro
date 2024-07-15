@@ -3,7 +3,7 @@ import { Client } from '@notionhq/client'
 import { ListBlockChildrenResponse, BlockObjectResponse } from '@notionhq/client/build/src/api-endpoints'
 import NotionBlock from '@/app/resume/notion-block'
 import clsx from 'clsx'
-import { DotList } from '@/app/ui'
+import { DotList, Loading } from '@/app/ui'
 import { unstable_noStore } from 'next/cache'
 
 const PAGE_ID_RESUME = 'e96e3a8a0c6d4553b523c6a0847a2acb'
@@ -51,7 +51,7 @@ export function parseDataBlockResumeToJSX (data: Awaited<ReturnType<typeof fetch
               : plain_text
           })}
           {item.has_children && (
-            <Suspense fallback={<div>loading block...</div>}>
+            <Suspense fallback={<Loading />}>
               {/* @ts-expect-error Async Server Component */}
               <NotionBlock id={item.id} />
             </Suspense>
@@ -65,12 +65,15 @@ export function parseDataBlockResumeToJSX (data: Awaited<ReturnType<typeof fetch
         <div key={item.id} className='my-1.5 block-list-item'>
           <DotList className='absolute left-0 top-0' />
           {item.bulleted_list_item.rich_text?.map(({ plain_text, href, annotations }, index) => {
+            if (href) {
+              return <a key={item.id + index} href={href} target='_blank' title='点击跳转'>{ plain_text }</a>
+            }
             return annotations.bold
               ? <span key={item.id + index} className='font-bold'>{ plain_text }</span>
               : plain_text
           })}
           {item.has_children && (
-            <Suspense fallback={<div>loading block...</div>}>
+            <Suspense fallback={<Loading />}>
               {/* @ts-expect-error Async Server Component */}
               <NotionBlock id={item.id} />
             </Suspense>
