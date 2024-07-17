@@ -51,7 +51,7 @@ export function parseDataBlockResumeToJSX (data: Awaited<ReturnType<typeof fetch
               : plain_text
           })}
           {item.has_children && (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<Loading className='block max-w-10 !my-5' />}>
               {/* @ts-expect-error Async Server Component */}
               <NotionBlock id={item.id} />
             </Suspense>
@@ -73,7 +73,7 @@ export function parseDataBlockResumeToJSX (data: Awaited<ReturnType<typeof fetch
               : plain_text
           })}
           {item.has_children && (
-            <Suspense fallback={<Loading />}>
+            <Suspense fallback={<Loading className='block max-w-10 !my-5' />}>
               {/* @ts-expect-error Async Server Component */}
               <NotionBlock id={item.id} />
             </Suspense>
