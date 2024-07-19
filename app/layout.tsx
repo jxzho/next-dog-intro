@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { Analytics } from '@vercel/analytics/react'
 import GeistProvider from './geist-provider'
 import './styles/globals.scss'
 
@@ -25,6 +26,7 @@ export default function RootLayout({
       </head>
       <body>
         <GeistProvider>{children}</GeistProvider>
+        <Analytics />
       </body>
     </html>
   )
