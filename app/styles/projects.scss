@@ -1,0 +1,47 @@
+.page-projects {
+  @apply flex flex-col justify-center;
+  min-height: calc(100vh - var(--footer-author-h));
+
+  .projects-wrapper {
+    @apply w-4/5 mx-auto;
+
+    .card-project {
+      @apply sm:w-[360px] rounded-xl bg-white p-4;
+
+      .name {
+        @apply text-xl font-bold text-[#333];
+      }
+
+      .cover {
+        @apply my-3.5 rounded-lg overflow-hidden relative bg-gray-200;
+        border: .1px solid #D8E8ED;
+      }
+
+
+      .desc {
+        @apply my-3.5 text-gray-600;
+      }
+
+      .tags {
+        >.tag {
+          @apply text-[#1677FF] inline-block mr-2 text-xs rounded-full px-2.5 py-1;
+          border: 1px solid #D8E8ED;
+          background-color: #d8e8ed97;
+        }
+      }
+
+      transition: all .3s ease;
+      &:hover {
+        text-shadow:
+          2px 2px 4px rgba(#D8E8ED, 0.5),
+          -2px -2px 4px rgba(#D8E8ED, 0.3);
+        box-shadow:
+          var(--tw-ring-offset-shadow, 0 0 #333),
+          var(--tw-ring-shadow, 0 0 #333),
+          0px 0px 15px 0px rgba(0,0,0, .015),
+          0px 2px 30px 0px rgba(0,0,0, .06),
+          0px 0px 1px 0px rgba(0,0,0, .15);
+      }
+    }
+  }
+}
