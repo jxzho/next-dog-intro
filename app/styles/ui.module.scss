@@ -10,3 +10,21 @@
     border-radius: 50%;
   }
 }
+
+.skl {
+  background-image:
+    linear-gradient(
+      270deg,
+      #fafafa,
+      #eaeaea,
+      #eaeaea,
+      #fafafa,
+    );
+  background-size: 200% 100%;
+  animation: skeleton_loading 2s ease infinite;
+}
+
+@keyframes skeleton_loading {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
