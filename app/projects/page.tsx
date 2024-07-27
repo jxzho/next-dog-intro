@@ -50,7 +50,7 @@ export default function Projects () {
           Project Space
         </h2>
 
-        <div className='flex flex-wrap justify-center gap-5 w-[380px] xl:w-[1200px] mx-auto'>
+        <div className='flex flex-wrap justify-center gap-5 w-[380px] xl:w-[1200px] mx-auto my-5'>
           {
             myProjects.map((item) => (
               <Link href={item.home_link} target='_blank' key={item.name}>
