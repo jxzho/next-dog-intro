@@ -3,15 +3,24 @@
   min-height: calc(100vh - var(--footer-author-h));
 
   .projects-wrapper {
+
+    >.card-project-wrapper {
+      @apply flex flex-wrap gap-5 sm:w-[640px] md:w-[820px] xl:w-[1200px] sm:px-16 md:px-10 mx-auto my-5 px-5;
+    }
+
     .card-project {
-      @apply w-[360px] rounded-xl bg-white p-4;
+      @apply w-full sm:w-[520px] md:w-[360px] rounded-xl bg-white p-4;
+      box-shadow:
+        0 0 #000,
+        0 0 #000,
+        0 0 1px 0 rgba($color: #000, $alpha: .3);
 
       .name {
         @apply text-xl font-bold text-[#333];
       }
 
       .cover {
-        @apply my-3.5 rounded-lg overflow-hidden relative;
+        @apply my-3.5 rounded-lg overflow-hidden relative w-full pb-[62.57%] md:pb-0 sm:h-[180px];
         border: .1px solid #D8E8ED;
       }
 
@@ -20,23 +29,20 @@
       }
 
       .tags {
+        @apply flex gap-2 flex-wrap;
+        
         >.tag {
-          @apply text-[#1677FF] inline-block mr-2 text-xs rounded-full px-2.5 py-1;
+          @apply text-[#1677FF] inline-block text-xs rounded-full px-2.5 py-1 flex-shrink-0;
           border: 1px solid #D8E8ED;
           background-color: #d8e8ed97;
         }
       }
 
-      transition: all .36s ease;
       &:hover {
-        text-shadow:
-          2px 2px 4px rgba(#000, 0.06),
-          -2px -2px 4px rgba(#000, 0.06);
         box-shadow:
-          var(--tw-ring-offset-shadow, 0 0 #333),
-          var(--tw-ring-shadow, 0 0 #333),
-          0px -50px 80px -50px rgba(#000, .08),
-          0px 50px 80px -50px rgba(#000, .08),
+          0 0 1px 0 rgba($color: #000, $alpha: .3),
+          0px -50px 80px -50px rgba(#000, .12),
+          0px 50px 80px -50px rgba(#000, .12);
       }
     }
   }

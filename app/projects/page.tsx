@@ -46,11 +46,11 @@ export default function Projects () {
   return (
     <div className='page-projects'>
       <div className="projects-wrapper">
-        <h2 className='text-center text-4xl text-[#333] mt-10 mb-16'>
+        <h2 className='text-center text-4xl mt-10 mb-16 drop-shadow-lg'>
           Project Space
         </h2>
 
-        <div className='flex flex-wrap justify-center gap-5 w-[380px] xl:w-[1200px] mx-auto my-5'>
+        <div className='card-project-wrapper'>
           {
             myProjects.map((item) => (
               <Link href={item.home_link} target='_blank' key={item.name}>
@@ -58,10 +58,7 @@ export default function Projects () {
                 <div className="card-project">
                   <div className="name">{item.name}</div>
 
-                  <div className="cover" style={{
-                    width: '100%',
-                    height: 180
-                  }}>
+                  <div className="cover">
                     <Skeleton width='100%' height='100%'>
                       <Image
                         src={item.cover}
