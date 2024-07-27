@@ -16,6 +16,5 @@ export default async function Resume () {
     )
   }
 
-  {/* @ts-expect-error Async Server Component */}
   return <ResumePreview />
 }

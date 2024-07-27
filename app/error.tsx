@@ -18,6 +18,7 @@ export default function Error({
   return (
     <div className='p-5 sm:p-10'>
       <h2 className='text-3xl'>Something went wrong!</h2>
+      {/* @ts-expect-error */}
       <Button
         scale={0.7}
         onClick={
