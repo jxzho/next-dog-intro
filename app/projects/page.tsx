@@ -17,7 +17,7 @@ export default function Projects () {
       yPercent: '-20',
       duration: 0.56,
       opacity: 0,
-      ease: 'bounce.out',
+      ease: 'back.out',
       stagger: {
         each: 0.2
       }
