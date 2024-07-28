@@ -1,7 +1,7 @@
 import '@/app/styles/projects.scss'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Skeleton } from '@/app/components/server'
+import { Skeleton } from '@/app/components/server/skeleton'
 
 const myProjects = [
   {

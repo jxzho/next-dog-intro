@@ -1,7 +1,7 @@
 import styles from './styles/home.module.scss'
 import Link from 'next/link'
 import clsx from 'clsx'
-import TypeWriter from './typewriter'
+import TypeWriter from './components/client/typewriter'
 
 export default function Home () {
   return (
