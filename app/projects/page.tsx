@@ -14,12 +14,12 @@ export default function Projects () {
 
   useGSAP(() => {
     gsap.from(refs.current, {
-      yPercent: '-20',
-      duration: 0.56,
+      yPercent: '-10',
+      duration: 0.8,
       opacity: 0,
       ease: 'back.out',
       stagger: {
-        each: 0.2
+        each: 0.25
       }
     })
   }, {
@@ -29,7 +29,7 @@ export default function Projects () {
   return (
     <div className='page-projects'>
       <div className="projects-wrapper">
-        <h2 className='text-center text-4xl mt-10 mb-16 drop-shadow-lg'>
+        <h2 className='text-center text-3xl mt-10 mb-16 text-[#333] drop-shadow-md'>
           Project Space
         </h2>
 
