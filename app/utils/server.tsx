@@ -33,9 +33,18 @@ export function parseDataBlockResumeToJSX (data: Awaited<ReturnType<typeof fetch
             if (href) {
               return <a key={item.id + index} href={href} target='_blank' title='点击跳转'>{ plain_text }</a>
             }
-            return annotations.bold
-              ? <span className='font-bold'>{ plain_text }</span>
-              : plain_text
+            return (
+              <span
+                key={`p-[${item.id + index}]`}
+                className={clsx({
+                  'font-bold': annotations.bold,
+                  'italic': annotations.italic,
+                  'underline underline-offset-2': annotations.underline
+                })}
+              >
+                { plain_text }
+              </span>
+            )
           })}
         </p>
       )
