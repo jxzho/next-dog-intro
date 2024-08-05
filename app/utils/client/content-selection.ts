@@ -118,7 +118,7 @@ export const contentSelection = ({
       state.endRect = isBackward
         ? rangeRects[0]
         : {
-          ...rangeRects[0].toJSON(),
+          ...rangeRects[rangeRects.length - 1].toJSON(),
           x: rangeRects[rangeRects.length - 1].x + rangeRects[rangeRects.length - 1].width,
           left: rangeRects[rangeRects.length - 1].left + rangeRects[rangeRects.length - 1].width
         }
