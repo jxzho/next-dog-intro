@@ -1,126 +1,41 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { copyToClipboard } from '@/app/utils/client'
-
-const isBackwards = ({ anchorNode, anchorOffset, focusNode, focusOffset }: Selection) => {
-  let range = document.createRange()
-  range.setStart(anchorNode!, anchorOffset)
-  range.setEnd(focusNode!, focusOffset)
-
-  let backwards = range.collapsed
-  range.detach()
-  return backwards
-}
+import { copyToClipboard, contentSelection } from '@/app/utils/client'
 
 export default function Dom () {
   const [visible, setVisible] = useState(false)
   const [text, setText] = useState('')
   const [rect, setRect] = useState<null | DOMRect>(null)
-  const refEleLocator = useRef<null | HTMLElement>(null)
   const [isCopied, setCopied] = useState(false)
   const timerCopy = useRef<null | number>(null)
 
-  const [isbw, setIsBackward] = useState<boolean | null>(null)
+  const ts = contentSelection({
+    onSelect (data) {
+      const { text = '', endRect, isBackward } = data
+      setText(text)
+      setRect(endRect)
+      setIsBackward(!!isBackward)
+      setVisible(true)
+    },
+    onDeselect ({ text = '' }) {
+      setText(text)
+      setVisible(false)
+    }
+  })
 
-  const cleanData = () => {
-    document.getSelection()?.removeAllRanges()
-    setVisible(false)
-    setIsBackward(false)
-    refEleLocator.current!.remove()
-    setText('')
-    setRect(null)
-  }
+  const [isbw, setIsBackward] = useState<boolean | null>(null)
 
   const startCopy = async () => {
     await copyToClipboard(text.trim())
     setCopied(true)
   }
-
-  const onSelectEnd = () => {
-    const selection = document.getSelection()
-    
-    // No selection return
-    if (!selection || selection?.isCollapsed || selection.rangeCount <= 0 || selection.type !== 'Range') {
-      return
-    }
-
-    const isBackward = isBackwards(selection)
-    setIsBackward(isBackward)
-
-    const range = selection.getRangeAt(0)
-
-    const rangeRects = range.getClientRects()
-    // 前往后：取 last
-    // 后往前：取 first
-
-    const isSingleLine = rangeRects.length === 1 || (
-      rangeRects[0].top === rangeRects[rangeRects.length - 1].top
-    )
-
-    let startRect: DOMRect
-    let endRect: DOMRect
-
-    if (isSingleLine) {
-      const _rect = rangeRects[0]
-      startRect = {
-        ..._rect,
-        y: _rect.y,
-        top: _rect.top,
-        x: isBackward ? _rect.x + _rect.width : _rect.x,
-        left: isBackward ? _rect.left + _rect.width : _rect.left
-      }
-
-      endRect = {
-        ..._rect,
-        y: _rect.y,
-        top: _rect.top,
-        x: isBackward ? _rect.x : _rect.x + _rect.width,
-        left: isBackward ? _rect.left : _rect.left + _rect.width
-      }
-    } else {
-      /** multiple line */
-      startRect = isBackward ? rangeRects[rangeRects.length - 1] : rangeRects[0]
-      endRect = isBackward ? rangeRects[0] : rangeRects[rangeRects.length - 1]
-    }
-
-    const rectData = {
-      isSingleLine,
-      isBackward,
-      startRect,
-      endRect
-    }
-
-    const rangeCloned = range.cloneRange()
-    rangeCloned.collapse(!!isBackward)
-    rangeCloned.insertNode(refEleLocator.current!)
-  
-    const select = {
-      rect: refEleLocator.current!.getBoundingClientRect(),
-      text: selection.toString()
-    }
-
-    setText(select.text)
-    setRect(select.rect)
-    
-    setVisible(true)
-  }
-  
-  const onSelectStart = () => {
-    cleanData()
-  }
   
   useEffect(() => {
-    refEleLocator.current = document.createElement('i')
-    refEleLocator.current.classList.add('invisible')
-    document.addEventListener('selectstart', onSelectStart)
-    document.addEventListener('mouseup', onSelectEnd)
-    document.addEventListener('scroll', cleanData)
+    ts.on()
     
     return () => {
-      document.removeEventListener('selectstart', onSelectStart)
-      document.removeEventListener('mouseup', onSelectEnd)
-      document.addEventListener('scroll', cleanData)
+      ts.off()
     }
   }, [])
 
