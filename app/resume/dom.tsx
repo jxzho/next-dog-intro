@@ -11,6 +11,7 @@ export default function Dom () {
   const timerCopy = useRef<null | number>(null)
 
   const ts = contentSelection({
+    scrollDetect: true,
     onSelect (data) {
       const { text = '', endRect, isBackward } = data
       setText(text)

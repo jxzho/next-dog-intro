@@ -1,20 +1,23 @@
-/** Method Usage
-  const ts = contentSelection({
-    onSelect (data) {
-      data.text
-      data.isSingleLine
-      data.isBackward
-      data.startRect
-      data.endRect
-    }
-  })
-
-  # use in mount
-  ts.on()
-
-  # use in unmount
-  ts.off()
-*/
+/**
+ * Content Selection Utility
+ * 
+ * @example
+ * const ts = contentSelection({
+ *   onSelect: (data) => {
+ *     const { text, isSingleLine, isBackward, startRect, endRect } = data;
+ *     // Handle selection data
+ *   },
+ *   onDeselect: (data) => {
+ *     // Handle deselection
+ *   }
+ * });
+ * 
+ * // Activate in react component mount 
+ * useEffect(() => {
+ *   ts.on()
+ *   return () => ts.off()
+ * }, [])
+ */
 
 type StateSelection = {
   isSingleLine?: boolean
@@ -26,13 +29,13 @@ type StateSelection = {
 }
 
 type ConfigContentSelection = {
-  scrollCancel?: boolean
+  scrollDetect?: boolean
   onSelect?: (data: StateSelection) => void
   onDeselect?: (data: StateSelection) => void
 }
 
 export const contentSelection = ({
-  scrollCancel,
+  scrollDetect,
   onSelect,
   onDeselect
 }: ConfigContentSelection = {}) => {
@@ -53,13 +56,13 @@ export const contentSelection = ({
   let __eleLocate__: null | HTMLElement
 
   const clearState = () => {
-    __eleLocate__?.remove()
     document.getSelection()?.removeAllRanges()
     state.isBackward = true
     state.startRect = null
     state.endRect = null
     state.locateRect = null
     __selection__ = null
+    __eleLocate__?.remove()
   }
 
   const deselect = () => {
@@ -87,11 +90,8 @@ export const contentSelection = ({
     }
 
     __selection__ = selection
-
     const isBackward = __isBackwards__(selection)
-    
     const range = selection.getRangeAt(0)
-
     const rangeRects = range.getClientRects()
 
     const isSingleLine = rangeRects.length === 1 || (
@@ -104,16 +104,19 @@ export const contentSelection = ({
      */
     if (isSingleLine) {
       const _rect = rangeRects[0]
+      const _rectLast = rangeRects[rangeRects.length - 1]
       state.startRect = {
         ..._rect.toJSON(),
-        x: isBackward ? _rect.x + _rect.width : _rect.x,
-        left: isBackward ? _rect.left + _rect.width : _rect.left
+        width: Array.from(rangeRects).reduce((acc, rect) => acc + rect.width, 0),
+        x: isBackward ? _rectLast.x + _rectLast.width : _rect.x,
+        left: isBackward ? _rectLast.left + _rectLast.width : _rect.left
       }
 
       state.endRect = {
         ..._rect.toJSON(),
-        x: isBackward ? _rect.x : _rect.x + _rect.width,
-        left: isBackward ? _rect.left : _rect.left + _rect.width
+        width: Array.from(rangeRects).reduce((acc, rect) => acc + rect.width, 0),
+        x: isBackward ? _rect.x : _rectLast.x + _rectLast.width,
+        left: isBackward ? _rect.left : _rectLast.left + _rectLast.width
       }
     } else {
       state.startRect = isBackward
@@ -156,7 +159,7 @@ export const contentSelection = ({
     document.addEventListener('selectstart', onSelectStart)
     document.addEventListener('mouseup', onSelectEnd)
     
-    if (scrollCancel) {
+    if (scrollDetect) {
       document.addEventListener('scroll', onScroll)
     }
   }
