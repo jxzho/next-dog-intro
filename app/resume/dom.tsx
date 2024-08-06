@@ -33,7 +33,6 @@ export default function Dom () {
   
   useEffect(() => {
     ts.on()
-    
     return () => {
       ts.off()
     }
