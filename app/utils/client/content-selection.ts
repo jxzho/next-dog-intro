@@ -62,10 +62,19 @@ export const contentSelection = ({
     __selection__ = null
   }
 
-  const onSelectStart = () => {
+  const deselect = () => {
     if (__selection__) {
       onDeselect?.(state)
     }
+  }
+
+  const onSelectStart = () => {
+    deselect()
+    clearState()
+  }
+
+  const onScroll = () => {
+    deselect()
     clearState()
   }
 
@@ -148,14 +157,14 @@ export const contentSelection = ({
     document.addEventListener('mouseup', onSelectEnd)
     
     if (scrollCancel) {
-      document.addEventListener('scroll', clearState)
+      document.addEventListener('scroll', onScroll)
     }
   }
 
   ts.off = () => {
     document.removeEventListener('selectstart', onSelectStart)
     document.removeEventListener('mouseup', onSelectEnd)
-    document.addEventListener('scroll', clearState)
+    document.addEventListener('scroll', onScroll)
   }
 
   return ts
