@@ -1,7 +1,8 @@
 'use client'
 
 import { useEffect, useState, useRef } from 'react'
-import { copyToClipboard, contentSelection } from '@/app/utils/client'
+import { copyToClipboard } from '@/app/utils/client'
+import { contentSelection } from '@rjdev/selection'
 
 export default function Dom () {
   const [visible, setVisible] = useState(false)
@@ -10,7 +11,7 @@ export default function Dom () {
   const [isCopied, setCopied] = useState(false)
   const timerCopy = useRef<null | number>(null)
 
-  const ts = contentSelection({
+  const cs = contentSelection({
     scrollDetect: true,
     onSelect (data) {
       const { text = '', endRect, isBackward } = data
@@ -33,9 +34,9 @@ export default function Dom () {
   }
   
   useEffect(() => {
-    ts.on()
+    cs.on()
     return () => {
-      ts.off()
+      cs.off()
     }
   }, [])
 
