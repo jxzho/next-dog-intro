@@ -216,9 +216,9 @@
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
 "@rjdev/selection@^0.0.0-alpha.1":
-  version "0.0.0-alpha.1"
-  resolved "https://registry.yarnpkg.com/@rjdev/selection/-/selection-0.0.0-alpha.1.tgz#7140426f19ac26779825750717ea880b87b371d8"
-  integrity sha512-fKQnfLlg0c6gerOlPkSpvgakvvtcozQ4MkcBVqcoG401KT+tCYa9fW95SF5WSfWXwUnO9uLnQ0EuKsh1OYJ8tA==
+  version "0.0.0-alpha.1.1"
+  resolved "https://registry.yarnpkg.com/@rjdev/selection/-/selection-0.0.0-alpha.1.1.tgz#fe07f1c69fd7b4f042552d8559a9efaa24e8eade"
+  integrity sha512-UxMBQR6F3TthmnIeFYGr3uyyrkf7HItGpSTmOtBDbl4ZuzTA2BTFryk2qOBGZii458E66ZDOkCmgb+FfgnRHrg==
 
 "@rushstack/eslint-patch@^1.3.3":
   version "1.10.4"
