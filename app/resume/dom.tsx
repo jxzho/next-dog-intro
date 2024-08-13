@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { copyToClipboard } from '@/app/utils/client'
 import { contentSelection } from '@rjdev/selection'
+import clsx from 'clsx'
 
 export default function Dom () {
   const [visible, setVisible] = useState(false)
@@ -59,7 +60,9 @@ export default function Dom () {
 
   return visible ? (
     <div
-      className='fixed left-0 top-0 bg-white !m-0 px-2 py-1 border border-solid border-gray-300 transition-all rounded-md inline-flex items-center cursor-pointer select-none'
+      className={clsx([
+        'fixed left-0 top-0 bg-white !m-0 px-2 py-1 border border-solid border-gray-300 transition-all rounded-md inline-flex items-center cursor-pointer select-none',
+      ])}
       style={{
         transform: rect
           ? `translate3d(
