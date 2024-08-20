@@ -2,7 +2,7 @@
  * Content Selection Utility
  * 
  * @example
- * const ts = contentSelection({
+ * const cs = contentSelection({
  *   onSelect: (data) => {
  *     const { text, isSingleLine, isBackward, startRect, endRect } = data;
  *     // Handle selection data
@@ -14,8 +14,8 @@
  * 
  * // Activate in react component mount 
  * useEffect(() => {
- *   ts.on()
- *   return () => ts.off()
+ *   cs.on()
+ *   return () => cs.off()
  * }, [])
  */
 
@@ -39,7 +39,7 @@ export const contentSelection = ({
   onSelect,
   onDeselect
 }: ConfigContentSelection = {}) => {
-  const ts = Object.create(null) as {
+  const __cs__ = Object.create(null) as {
     on: Function
     off: Function
   }
@@ -148,7 +148,7 @@ export const contentSelection = ({
     onSelect?.(state)
   }
 
-  ts.on = () => {
+  __cs__.on = () => {
     if (!document) {
       throw new Error('Need Dom Mounted to use `.on`.')
     }
@@ -164,13 +164,13 @@ export const contentSelection = ({
     }
   }
 
-  ts.off = () => {
+  __cs__.off = () => {
     document.removeEventListener('selectstart', onSelectStart)
     document.removeEventListener('mouseup', onSelectEnd)
     document.addEventListener('scroll', onScroll)
   }
 
-  return ts
+  return __cs__
 }
 
 function __isBackwards__ ({ anchorNode, anchorOffset, focusNode, focusOffset }: Selection) {
