@@ -1,5 +1,6 @@
 .dot-list {
-  @apply inline-block px-1.5 select-none text-black;
+  @apply inline-block px-1.5 select-none;
+  color: var(--dot-color);
 
   &::before {
     content: var(--list-num, '•');

@@ -18,10 +18,13 @@
   }
 
   a {
-    @apply text-gray-500 underline-offset-1 underline;
+    @apply underline-offset-1 underline;
+
     &:hover {
-      @apply text-black;
+      @apply brightness-125;
     }
+
+    color: var(--link-color);
   }
 
   .block-list-item {
