@@ -215,10 +215,10 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
-"@rjdev/selection@^0.0.0-alpha.1.2":
-  version "0.0.0-alpha.1.2"
-  resolved "https://registry.yarnpkg.com/@rjdev/selection/-/selection-0.0.0-alpha.1.2.tgz#c7cdd3f931f085a3da06ab9ebcdb8dd883a427fe"
-  integrity sha512-FO9QF9+hgjUmrSsBoxubm03UP5yIM9JYmM2qCPoM5hSc56q3xqYREfoluPDXAiAbPh6i9aFN2byBhmsmMcTScw==
+"@rjdev/selection@^0.0.0-alpha.1.3":
+  version "0.0.0-alpha.1.3"
+  resolved "https://registry.yarnpkg.com/@rjdev/selection/-/selection-0.0.0-alpha.1.3.tgz#41dabaa22549b3dbbad24bd33b821ac762fd515f"
+  integrity sha512-NO724cMzez1sh0RgUO6unYEZ1fs2p1FUfQjOewq0w11b5ValKwADLWkguDQXtUQtDnLWfMNDTmRpn0WzHR1/uQ==
 
 "@rushstack/eslint-patch@^1.3.3":
   version "1.10.4"
