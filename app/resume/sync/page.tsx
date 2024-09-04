@@ -1,7 +1,5 @@
-import { Suspense, useState } from 'react'
-import { Loading } from '@/app/ui'
 import ResumeSync from './sync'
-import { updateFromNotion, updateToServer } from './server'
+import { updateToServer } from './server'
 import ResumePreview from '../preview'
 
 export default async function PageResumeSync () {
