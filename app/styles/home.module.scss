@@ -11,7 +11,6 @@
     max-height: 32px;
     @apply flex items-center gap-x-1.5;
     @apply rounded-lg px-3.5 py-1.5;
-    @apply bg-white;
     box-shadow: 0 0 1px 0 rgba($color: #000, $alpha: 0.15);
 
     &:hover, &:focus {
@@ -38,7 +37,7 @@
 }
 
 .whoiam {
-  @apply font-bold text-5xl sm:text-6xl text-black min-h-[3.75rem];
+  @apply font-bold text-5xl sm:text-6xl min-h-[3.75rem];
   @apply leading-tight #{!important};
 
   &::after {

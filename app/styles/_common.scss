@@ -1,5 +1,5 @@
 @mixin common-preview-resume {
-  @apply max-w-screen-sm;
+  @apply max-w-screen-sm dark:text-slate-300;
 
   > div, p, ul, li, ol {
     @apply my-1.5;

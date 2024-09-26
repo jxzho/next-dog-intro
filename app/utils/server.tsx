@@ -5,6 +5,7 @@ import NotionBlock from '@/app/resume/notion-block'
 import clsx from 'clsx'
 import { DotList, Loading } from '@/app/ui'
 import { unstable_noStore } from 'next/cache'
+import { cookies } from 'next/headers'
 
 const PAGE_ID_RESUME = 'e96e3a8a0c6d4553b523c6a0847a2acb'
 
@@ -104,3 +105,10 @@ export function parseDataBlockResumeToJSX (data: Awaited<ReturnType<typeof fetch
     return ''
   })
 }
+
+async function getColorScheme () {
+  const cookiesList = cookies()
+  return cookiesList.get('color-scheme')
+}
+
+export { getColorScheme }

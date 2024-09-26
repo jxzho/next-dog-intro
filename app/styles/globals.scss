@@ -15,15 +15,21 @@
 html {
   background: linear-gradient(90deg, #ececec 28%, #eee 0);
   background-size: 15px;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: #333;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+  &.dark {
+    --dot-color: #ddd;
+    --blue: #4493F8;
+    background: #0D1117;
   }
 }
+
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --foreground-rgb: #333;
+//     --background-start-rgb: 0, 0, 0;
+//     --background-end-rgb: 0, 0, 0;
+//   }
+// }
 
 body {
   @apply text-sm;

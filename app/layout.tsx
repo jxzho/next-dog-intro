@@ -1,6 +1,10 @@
 import type { Metadata } from 'next'
 import { Analytics } from '@vercel/analytics/react'
+import { getColorScheme } from '@/app/utils/server'
+import clsx from 'clsx'
 import GeistProvider from './geist-provider'
+import { ProviderColorScheme } from './color-scheme-provider'
+import { SwitchColorScheme } from './components/client/switch-color-scheme'
 import './styles/globals.scss'
 
 export const metadata: Metadata = {
@@ -8,11 +12,13 @@ export const metadata: Metadata = {
   description: 'The site was built by Junxio(Russell Xio).',
 }
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const colorScheme = await getColorScheme()
+  console.log('=>> RootLayout', { colorScheme: colorScheme?.value })
   return (
-    <html lang="en">
+    <html lang="en" className={clsx({ dark: colorScheme?.value === 'dark' })}>
       <head>
         <link rel="preconnect" href="https://cdn.junxio.cc/" crossOrigin="" />
         <link href="https://cdn.junxio.cc/static/font/ST_Black/Regular/index.css" rel="stylesheet" />
@@ -25,7 +31,14 @@ export default function RootLayout({
         <meta property='og:url' content='junxio.cc' key='ogurl' />
       </head>
       <body>
-        <GeistProvider>{children}</GeistProvider>
+        <GeistProvider>
+          <ProviderColorScheme>
+            {children}
+            <div className='fixed top-0 right-0 m-5'>
+              <SwitchColorScheme colorScheme='light' />
+            </div>
+          </ProviderColorScheme>
+        </GeistProvider>
         <Analytics />
       </body>
     </html>

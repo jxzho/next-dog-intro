@@ -3,38 +3,38 @@
   min-height: calc(100vh - var(--footer-author-h));
 
   .projects-wrapper {
+    @apply text-[#333] dark:text-slate-300;
 
     >.card-project-wrapper {
       @apply flex flex-wrap gap-5 sm:w-[640px] md:w-[820px] xl:w-[1200px] sm:px-16 md:px-10 mx-auto my-5 px-5;
     }
 
     .card-project {
-      @apply w-full sm:w-[520px] md:w-[360px] rounded-xl bg-white p-4;
+      @apply w-full sm:w-[520px] md:w-[360px] rounded-xl bg-white dark:bg-[#151B23] p-4 dark:border dark:border-solid dark:border-[#3D444E];
       box-shadow:
         0 0 #000,
         0 0 #000,
         0 0 1px 0 rgba($color: #000, $alpha: .3);
 
       .name {
-        @apply text-xl font-bold text-[#333];
+        @apply text-xl font-bold;
       }
 
       .cover {
-        @apply my-3.5 rounded-lg overflow-hidden relative w-full pb-[62.57%] md:pb-0 sm:h-[180px];
+        @apply my-3.5 rounded-lg overflow-hidden relative w-full pb-[62.57%] md:pb-0 sm:h-[180px] dark:brightness-[0.8] dark:contrast-[0.8];
         border: .1px solid #D8E8ED;
       }
 
       .desc {
-        @apply my-3.5 text-gray-600;
+        @apply my-3.5;
       }
 
       .tags {
         @apply flex gap-2 flex-wrap;
         
         >.tag {
-          @apply text-[#1677FF] inline-block text-xs rounded-full px-2.5 py-1 flex-shrink-0;
-          border: 1px solid #D8E8ED;
-          background-color: #d8e8ed97;
+          @apply text-[#1677FF] dark:text-[#F0F6FD] inline-block text-xs rounded-full px-2.5 py-1 flex-shrink-0;
+          @apply border border-solid border-[#d8e8ed] dark:border-[#3D444E] bg-[#d8e8ed97] dark:bg-[#212831];
         }
       }
 

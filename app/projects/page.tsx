@@ -29,7 +29,7 @@ export default function Projects () {
   return (
     <div className='page-projects'>
       <div className="projects-wrapper">
-        <h2 className='text-center text-3xl mt-10 mb-16 text-[#333] drop-shadow-md'>
+        <h2 className='text-center text-3xl mt-10 mb-16 drop-shadow-md dark:text-slate-200'>
           Project Space
         </h2>
 

@@ -1,7 +1,7 @@
 .dot-list {
-  @apply inline-block px-1.5 select-none;
   color: var(--dot-color);
-
+  @apply inline-block px-1.5 select-none;
+  
   &::before {
     content: var(--list-num, '•');
     display: inline-block;
