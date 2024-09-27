@@ -21,10 +21,7 @@ export default function Error({
       {/* @ts-expect-error */}
       <Button
         scale={0.7}
-        onClick={
-          // Attempt to recover by trying to re-render the segment
-          () => reset()
-        }
+        onClick={() => reset()}
       >
         重试
       </Button>
