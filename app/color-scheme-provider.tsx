@@ -12,20 +12,22 @@ const ContextColorScheme = createContext<{
 type Props = Readonly<{ children: React.ReactNode }>
 
 function ProviderColorScheme({ children }: Props) {
-  const [colorScheme, setColorScheme] = useState<ColorSchema>()
+  const stringColorSchemeCookies = document.cookie.split(';').find(item => item.trim().includes('color-scheme'))?.trim()
+  const colorSchemeFromCookie = stringColorSchemeCookies?.split('=')[1] as (ColorSchema | undefined)
+  const [colorScheme, setColorScheme] = useState(colorSchemeFromCookie)
 
   useEffect(() => {
-    if (colorScheme) {
-      document.cookie = `color-scheme=${colorScheme};`
+    const html = document.documentElement
+    if (colorScheme !== 'dark' && html.classList.contains('dark')) {
+      html.classList.remove('dark')
+    } else if (colorScheme === 'dark' && !html.classList.contains('dark')) {
+      html.classList.add('dark')
     }
   }, [colorScheme])
   
   useEffect(() => {
     if (matchMedia) {
-      const stringColorSchemeCookies = document.cookie.split(';').find(item => item.trim().includes('color-scheme'))?.trim()
-
-      const isDark = matchMedia('(prefers-color-scheme: dark)').matches ||
-        stringColorSchemeCookies?.split('=')[1] === 'dark'
+      const isDark = matchMedia('(prefers-color-scheme: dark)').matches || colorSchemeFromCookie
       if (isDark) {
         setColorScheme('dark')
       } else {
