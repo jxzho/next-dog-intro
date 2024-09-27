@@ -16,7 +16,6 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const colorScheme = await getColorScheme()
-  console.log('=>> RootLayout', { colorScheme: colorScheme?.value })
   return (
     <html lang="en" className={clsx({ dark: colorScheme?.value === 'dark' })}>
       <head>
