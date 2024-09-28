@@ -5,15 +5,18 @@ import styles from '../styles/resume.module.scss'
 import '../styles/preview.scss'
 
 export default async function Resume () {
-  const html = await getFromServer()
-
-  if (html) {
-    return (
-      <div className={styles.wrapper}>
-        <div className='resume-preview-wrapper' dangerouslySetInnerHTML={{ __html: html }}></div>
-        <Dom />
-      </div>
-    )
+  try {
+    const html = await getFromServer()
+    if (html) {
+      return (
+        <div className={styles.wrapper}>
+          <div className='resume-preview-wrapper' dangerouslySetInnerHTML={{ __html: html }}></div>
+          <Dom />
+        </div>
+      )
+    }
+  } catch (error) {
+    console.log('=>> init resume error', { error })    
   }
 
   return <ResumePreview />
