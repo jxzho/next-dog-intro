@@ -9,11 +9,11 @@ const mapColorScheme = new Map<string | undefined, string>([
 ])
 
 function SwitchColorScheme (props: {
-  colorScheme: 'dark' | 'light'
+  colorScheme: 'dark' | 'light' | undefined
 }) {
+  const [colorHEX, setColorHEX] = useState(mapColorScheme.get(props.colorScheme))
+
   const { colorScheme, syncColorScheme } = useContext(ContextColorScheme)
-  
-  const [colorHEX, setColorHEX] = useState(mapColorScheme.get(colorScheme))
 
   function toggleColorScheme () {
     const val = colorScheme === 'dark'
