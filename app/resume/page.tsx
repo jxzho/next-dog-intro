@@ -21,6 +21,7 @@ export default async function Resume () {
   return (
     <div className={styles.wrapper} data-from-server>
       <ResumePreview />
+      <Dom />
     </div>
   )
 }
