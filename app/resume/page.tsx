@@ -9,7 +9,7 @@ export default async function Resume () {
     const html = await getFromServer()
     if (html) {
       return (
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper} data-static>
           <div className='resume-preview-wrapper' dangerouslySetInnerHTML={{ __html: html }}></div>
           <Dom />
         </div>
@@ -18,6 +18,9 @@ export default async function Resume () {
   } catch (error) {
     console.log('=>> init resume error', { error })    
   }
-
-  return <ResumePreview />
+  return (
+    <div className={styles.wrapper} data-from-server>
+      <ResumePreview />
+    </div>
+  )
 }
