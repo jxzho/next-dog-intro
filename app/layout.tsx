@@ -33,7 +33,7 @@ export default async function RootLayout({
         <GeistProvider>
           <ProviderColorScheme>
             {children}
-            <div className='fixed top-0 right-0 m-5'>
+            <div className='fixed top-0 right-0'>
               <SwitchColorScheme colorScheme='light' />
             </div>
           </ProviderColorScheme>
