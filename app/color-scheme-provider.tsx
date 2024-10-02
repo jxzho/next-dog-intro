@@ -29,14 +29,23 @@ function ProviderColorScheme({ children }: Props) {
   
   useEffect(() => {
     if (matchMedia) {
+      const darkModeMedia = matchMedia('(prefers-color-scheme: dark)')
+      darkModeMedia.addEventListener('change', (event) => {
+        if (event.matches) {
+          syncColorScheme('dark')
+        } else {
+          syncColorScheme('light')
+        }
+      })
+
       const stringColorSchemeCookies = document.cookie.split(';').find(item => item.trim().includes('color-scheme'))?.trim()
       const colorSchemeFromCookie = stringColorSchemeCookies?.split('=')[1] as (ColorSchema | undefined)
-      const isDark = matchMedia('(prefers-color-scheme: dark)').matches || colorSchemeFromCookie
+      const isDark = colorSchemeFromCookie === 'dark'
       if (isDark && colorScheme !== 'dark') {
-        setColorScheme('dark')
+        syncColorScheme('dark')
       }
       if (!isDark && colorScheme !== 'light') {
-        setColorScheme('light')
+        syncColorScheme('light')
       }
     }
   }, [])
