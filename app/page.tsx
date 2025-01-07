@@ -73,7 +73,12 @@ export default function Home () {
           </ul>
         </nav>
       </main>
-      <div className={styles.author}>© 2024 Junxio.</div>
+      <div className={styles.author}>
+        <span>© 2025 Junxio.</span>
+        <div className={styles.icp}>
+          <a href="https://beian.miit.gov.cn/" target="_blank">粤ICP备2023134810号-1</a>
+        </div>
+      </div>
       <TypeWriter
         selector='.header-greeting >.whoiam >span'
         words={[

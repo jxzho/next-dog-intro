@@ -36,6 +36,10 @@
   height: var(--footer-author-h);
 }
 
+.icp {
+  @apply text-[11px] text-gray-500 text-center opacity-50;
+}
+
 .whoiam {
   @apply font-bold text-5xl sm:text-6xl min-h-[3.75rem];
   @apply leading-tight #{!important};
